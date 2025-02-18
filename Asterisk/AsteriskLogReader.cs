@@ -32,7 +32,7 @@ namespace Asterisk
         private Color green = Color.FromArgb(143, 185, 53);
         private Color grey = Color.FromArgb(211, 211, 211);
         private bool DrawOutline = true;
-        private int adjustedWidth;
+        private int AdjustedWidth;
         private int[] Steps = { 60, 120, 300, 600, 900, 1200, 1500, 1800, 3200, 3600 };
 
         public AsteriskLogReader()
@@ -116,15 +116,15 @@ namespace Asterisk
         {
             int duration = anrufDaten.Last().TimestampStop - anrufDaten.First().TimestampStart;
             int mintime = anrufDaten.First().TimestampStart;
-            adjustedWidth = ImageWidth - OffsetX - MarginRight;
+            AdjustedWidth = ImageWidth - OffsetX - MarginRight;
             for (int i = 0; i < anrufDaten.Count; i++)
             { 
                 int parallel = anrufDaten.Where(a => a.TimestampStart <= anrufDaten[i].TimestampStart && a.TimestampStop > anrufDaten[i].TimestampStart).Count();
                 anrufDaten[i].StartDrawY = OffsetY + BarHeight * parallel;
                 anrufDaten[i].height = BarHeight;
-                anrufDaten[i].StartDrawX = (int)((anrufDaten[i].TimestampStart - mintime) / (float)duration * adjustedWidth) + OffsetX;
-                anrufDaten[i].CallStartDrawX = Math.Max((int)(((anrufDaten[i].TimestampCallStart - mintime) / (float)duration) * adjustedWidth), anrufDaten[i].StartDrawX - OffsetX + 1) + OffsetX;
-                anrufDaten[i].StopDrawX = Math.Max((int)(((anrufDaten[i].TimestampStop - mintime) / (float)duration) * adjustedWidth), anrufDaten[i].CallStartDrawX - OffsetX + 1) + OffsetX;
+                anrufDaten[i].StartDrawX = (int)((anrufDaten[i].TimestampStart - mintime) / (float)duration * AdjustedWidth) + OffsetX;
+                anrufDaten[i].CallStartDrawX = Math.Max((int)(((anrufDaten[i].TimestampCallStart - mintime) / (float)duration) * AdjustedWidth), anrufDaten[i].StartDrawX - OffsetX + 1) + OffsetX;
+                anrufDaten[i].StopDrawX = Math.Max((int)(((anrufDaten[i].TimestampStop - mintime) / (float)duration) * AdjustedWidth), anrufDaten[i].CallStartDrawX - OffsetX + 1) + OffsetX;
             }
         }
         #endregion 
@@ -174,7 +174,7 @@ namespace Asterisk
         {
             Pen pen = new Pen(Color.Black);
             int LabelSize = 75;
-            int x = OffsetX + (int)(adjustedWidth * percent);
+            int x = OffsetX + (int)(AdjustedWidth * percent);
             int y = ImageHeight - OffsetY + BarBorder;
             graphics.DrawLine(pen, x, 0, x, ImageHeight - OffsetY + BarBorder);
             if (x + LabelSize > ImageWidth)

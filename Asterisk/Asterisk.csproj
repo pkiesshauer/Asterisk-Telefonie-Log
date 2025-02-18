@@ -46,7 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AnrufDaten.cs" />
     <Compile Include="AsteriskLogReader.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -46,7 +46,7 @@
             this.ButtonReadLogFile.Name = "ButtonReadLogFile";
             this.ButtonReadLogFile.Size = new System.Drawing.Size(128, 40);
             this.ButtonReadLogFile.TabIndex = 0;
-            this.ButtonReadLogFile.Text = "Log File Einlesen";
+            this.ButtonReadLogFile.Text = "Log Datei Einlesen";
             this.ButtonReadLogFile.UseVisualStyleBackColor = true;
             this.ButtonReadLogFile.Click += new System.EventHandler(this.ButtonReadFromFile_Click);
             // 
@@ -60,6 +60,7 @@
             this.TextBoxInput.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.TextBoxInput.Size = new System.Drawing.Size(980, 565);
             this.TextBoxInput.TabIndex = 2;
+            this.TextBoxInput.Text = "Log einfügen oder aus Datei laden.";
             this.TextBoxInput.WordWrap = false;
             this.TextBoxInput.TextChanged += new System.EventHandler(this.TextBoxInput_TextChanged);
             // 
